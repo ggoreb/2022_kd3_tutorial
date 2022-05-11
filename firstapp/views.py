@@ -1,16 +1,21 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 
 from firstapp.models import Curriculum
 
 from .models import Curriculum
+from django.shortcuts import render
 
 def show(request):
   curriculum = Curriculum.objects.all()
-  result = ''
-  for c in curriculum:
-    result += c.name + '<br>'
-  return HttpResponse(result)
+  # result = ''
+  # for c in curriculum:
+  #   result += c.name + '<br>'
+  # return HttpResponse(result)
+  return render(
+    request, 'show.html', 
+    { 'data': curriculum }
+  )
+
 
 def insert(request):
   # 1-linux 입력
