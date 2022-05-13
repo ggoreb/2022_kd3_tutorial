@@ -28,3 +28,61 @@ class Shop(models.Model):
     app_label = 'thirdapp'
     managed = False
 
+class Owner(models.Model):
+  name = models.CharField(max_length=50, null=True)
+  class Meta:
+    db_table = 'owner'
+
+class Animal(models.Model):
+  name = models.CharField(max_length=50, null=True)
+  age = models.IntegerField(null=True)
+  owner = models.ForeignKey(Owner, on_delete=models.SET_NULL, null=True)
+  class Meta:
+    db_table = 'animal'
+
+class Warranty(models.Model):
+  model_nm = models.CharField(max_length=50, null=True)
+  period = models.IntegerField(null=True)
+  class Meta:
+    db_table = 'warranty'
+
+class Product(models.Model):
+  name = models.CharField(max_length=50, null=True)
+  price = models.IntegerField(null=True)
+  animal = models.ForeignKey(Animal, on_delete=models.SET_NULL, null=True)
+  warranty = models.OneToOneField(Warranty, on_delete=models.SET_NULL, null=True)
+  class Meta:
+    db_table = 'product'
+
+class Playground(models.Model):
+  name = models.CharField(max_length=50, null=True)
+  address = models.CharField(max_length=50, null=True)
+  tel = models.CharField(max_length=20, null=True)
+  animals = models.ManyToManyField(Animal, null=True)
+  class Meta:
+    db_table = 'playground'
+
+class Dept(models.Model):
+  deptno = models.IntegerField(primary_key=True)
+  dname = models.CharField(max_length=14)
+  loc = models.CharField(max_length=13)
+  class Meta:
+    db_table = 'dept'
+    managed = False
+
+class Emp(models.Model):
+  empno = models.IntegerField(primary_key=True)
+  ename = models.CharField(max_length=10)
+  job = models.CharField(max_length=9)
+  mgr = models.IntegerField(null=True)
+  hiredate = models.DateTimeField()
+  sal = models.IntegerField()
+  comm = models.IntegerField(null=True)
+  # deptno = models.IntegerField()
+  dept = models.ForeignKey(
+    Dept, 
+    on_delete=models.CASCADE, 
+    db_column='deptno')
+  class Meta:
+    db_table = 'emp'
+    managed = False
