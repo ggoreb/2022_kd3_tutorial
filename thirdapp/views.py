@@ -27,6 +27,10 @@ def jeju_olle(request):
     {'jeju_olle_list': jeju_olle_list}
   )
 
+def jeju_olle_ajax(request):
+  return render(
+    request, 'thirdapp/jeju_olle_ajax.html', {})
+
 def shop(request):
   shop_list = Shop.objects.all()
   return render(

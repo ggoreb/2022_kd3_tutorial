@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from .models import Curriculum
 from django.shortcuts import render
 
+def req_ajax4(request):
+  return render(request, 'firstapp/ajax4.html')
+
 def req_get(request):
   a = request.GET.get('a')
   b = request.GET.get('b')

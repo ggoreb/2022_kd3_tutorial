@@ -2,6 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import ArmyShop, Course
 
+def course(request):
+  return render(
+    request,
+    'secondapp/course.html', {}
+  )
+
 def army_shop2(request, year, month):
   shops = ArmyShop.objects.filter(
     year=year, month=month)
