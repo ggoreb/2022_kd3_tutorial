@@ -1,9 +1,24 @@
 from django.http import HttpResponse
-
-from firstapp.models import Curriculum
-
+# from firstapp.models import Curriculum
 from .models import Curriculum
 from django.shortcuts import render
+
+def req_get(request):
+  a = request.GET.get('a')
+  b = request.GET.get('b')
+  c = request.GET['c']
+  result = '%s %s %s' % (a, b, c)
+  return HttpResponse(result)
+  
+def req_post(request):
+  if request.method == 'POST':
+    a = request.POST.get('a')
+    b = request.POST.get('b')
+    c = request.POST['c']
+    result = '%s %s %s' % (a, b, c)
+    return HttpResponse(result)
+  return render(request, 'firstapp/post.html')
+
 
 def show(request):
   curriculum = Curriculum.objects.all()
