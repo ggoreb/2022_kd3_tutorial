@@ -79,7 +79,7 @@ class Emp(models.Model):
   sal = models.IntegerField()
   comm = models.IntegerField(null=True)
   # deptno = models.IntegerField()
-  dept = models.ForeignKey(
+  dept = models.ForeignKey(  # dept_deptno
     Dept, 
     on_delete=models.CASCADE, 
     db_column='deptno')
