@@ -3,6 +3,12 @@ from django.http import HttpResponse
 from .models import Curriculum
 from django.shortcuts import render
 
+def template(request):
+  return render(
+    request, 'firstapp/template.html', {}
+  )
+
+
 import datetime
 def filter(request):
   c = Curriculum.objects.all()
