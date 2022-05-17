@@ -1,6 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Owner, Shop, JejuOlle
+from .models import Hospital, Owner, Shop, JejuOlle
+
+def hospital(request):
+  hospitals = Hospital.objects.all()
+
+  return render(
+    request, 
+    'thirdapp/hospital.html',
+    {'hospitals': hospitals}
+  )
 
 def owner(request):
   if request.method == 'POST':
