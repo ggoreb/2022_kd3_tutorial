@@ -2,6 +2,23 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import ArmyShop, Course
 
+from django.shortcuts import redirect
+from .forms import CourseForm
+def course_save(request):
+  if request.method == 'POST':
+    form = CourseForm(request.POST)
+    if form.is_valid():
+      c = form.save(commit=False)
+      c.save()
+      return redirect('/second/course/save/')
+  else:
+    form = CourseForm()
+
+  return render(
+    request, 'secondapp/course_save.html',
+    { 'form': form }
+  )
+
 def course(request):
   return render(
     request,
