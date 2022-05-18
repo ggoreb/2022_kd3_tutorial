@@ -3,7 +3,7 @@ from django.db import models
 from django.db.models.fields import CharField, IntegerField, FloatField
 from django.db.models.fields import FloatField
 from django.db.models.fields import DateField
-
+ 
 class Hospital(models.Model):
   sido = models.CharField(max_length=50)
   name = models.CharField(max_length=50)
