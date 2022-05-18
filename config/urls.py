@@ -34,5 +34,6 @@ urlpatterns = [
 
     path('member/', include('member.urls')),
 
+    path('file/', include('file.urls')),
 
 ]

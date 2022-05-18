@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']  # 모든 도메인에서 실행 가능 상태
 # Application definition
 
 INSTALLED_APPS = [
+    'file',
     'member',
     'firstapp',
     'secondapp',
