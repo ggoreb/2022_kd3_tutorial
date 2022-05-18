@@ -23,7 +23,7 @@ urlpatterns = [
     path('index1/', views.index1),
     path('index2/', views.index2),
     path('home/', config_views.home),
-    path('', config_views.index),
+    path('', config_views.index, name='index'),
     path('data/', config_views.excel),
 
     path('first/', include('firstapp.urls')),
